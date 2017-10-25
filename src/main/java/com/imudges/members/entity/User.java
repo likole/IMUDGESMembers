@@ -6,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by likole on 10/22/17.
+ * Created by likole on 10/25/17.
  */
 @Entity
 public class User {
     private int uid;
+    private String mail;
     private int year;
     private String major;
     private String password;
@@ -23,6 +24,16 @@ public class User {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    @Basic
+    @Column(name = "mail")
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Basic
@@ -64,6 +75,7 @@ public class User {
 
         if (uid != user.uid) return false;
         if (year != user.year) return false;
+        if (mail != null ? !mail.equals(user.mail) : user.mail != null) return false;
         if (major != null ? !major.equals(user.major) : user.major != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
 
@@ -73,6 +85,7 @@ public class User {
     @Override
     public int hashCode() {
         int result = uid;
+        result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + year;
         result = 31 * result + (major != null ? major.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);

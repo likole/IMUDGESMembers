@@ -6,25 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by likole on 10/22/17.
+ * Created by likole on 10/23/17.
  */
 @Entity
 public class Register {
-    private int rid;
     private String ak;
     private String sk;
 
     @Id
-    @Column(name = "rid")
-    public int getRid() {
-        return rid;
-    }
-
-    public void setRid(int rid) {
-        this.rid = rid;
-    }
-
-    @Basic
     @Column(name = "ak")
     public String getAk() {
         return ak;
@@ -51,7 +40,6 @@ public class Register {
 
         Register register = (Register) o;
 
-        if (rid != register.rid) return false;
         if (ak != null ? !ak.equals(register.ak) : register.ak != null) return false;
         if (sk != null ? !sk.equals(register.sk) : register.sk != null) return false;
 
@@ -60,8 +48,7 @@ public class Register {
 
     @Override
     public int hashCode() {
-        int result = rid;
-        result = 31 * result + (ak != null ? ak.hashCode() : 0);
+        int result = ak != null ? ak.hashCode() : 0;
         result = 31 * result + (sk != null ? sk.hashCode() : 0);
         return result;
     }
