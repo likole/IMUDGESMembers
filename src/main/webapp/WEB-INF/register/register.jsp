@@ -39,11 +39,11 @@
 		      <form class="form-login" action="register" method="post">
 		        <h2 class="form-login-heading">注册</h2>
 		        <div class="login-wrap">
-					<input type="text" name="mail" placeholder="邮箱(非联盟邮箱)" class="form-control"/>
+					<input type="email" name="mail" placeholder="邮箱(非联盟邮箱)" class="form-control" required/>
 					<br>
-					<input type="password" name="password" placeholder="密码" class="form-control"/>
+					<input type="password" name="password" placeholder="密码" class="form-control" required/>
                     <br>
-                    <input type="password" name="password_r" placeholder="再输入一遍" class="form-control"/>
+                    <input type="password" name="password_r" placeholder="再输入一遍" class="form-control" required/>
                     <br>
                     <input type="hidden" name="ak" value=<s:property value="ak"/> />
                     <input type="hidden" name="sk" value=<s:property value="sk"/> />
@@ -54,7 +54,7 @@
                     <hr>
                     <div class="registration">
                         已经拥有帐号?<br/>
-                        <a class="" href="../login.html">
+                        <a class="" href="../login/">
                             直接登陆
                         </a>
                     </div>

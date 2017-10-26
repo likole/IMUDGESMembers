@@ -43,7 +43,7 @@
                     <hr>
                     <div class="registration">
                         已经拥有帐号?<br/>
-                        <a class="" href="../login.html">
+                        <a class="" href="../login/">
                             直接登陆
                         </a>
                     </div>

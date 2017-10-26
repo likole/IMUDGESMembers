@@ -40,7 +40,7 @@
 		        <h2 class="form-login-heading">注册</h2>
 		        <div class="login-wrap">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="邮箱" aria-describedby="basic-addon2" name="mail">
+						<input type="text" class="form-control" placeholder="邮箱" aria-describedby="basic-addon2" name="mail" required>
 						<input type="hidden" name="csrf" value="<s:property value="csrf" />">
 						<span class="input-group-addon" id="basic-addon2">@imudges.com</span>
 					</div>
@@ -49,7 +49,7 @@
 		            <hr>
 		            <div class="registration">
 		                已经拥有帐号?<br/>
-		                <a class="" href="../login.html">
+		                <a class="" href="../login/">
 		                    直接登陆
 		                </a>
 		            </div>

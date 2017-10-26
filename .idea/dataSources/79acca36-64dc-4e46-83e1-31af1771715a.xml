@@ -8,7 +8,9 @@
     <schema id="3" parent="1" name="IMUCommunity"/>
     <schema id="4" parent="1" name="IMUDGES_PROFILE"/>
     <schema id="5" parent="1" name="information_schema"/>
-    <schema id="6" parent="1" name="jol"/>
+    <schema id="6" parent="1" name="jol">
+      <Visible>1</Visible>
+    </schema>
     <schema id="7" parent="1" name="jol_old"/>
     <schema id="8" parent="1" name="JWXT"/>
     <schema id="9" parent="1" name="likole_homepage"/>
@@ -18,58 +20,894 @@
     <schema id="13" parent="1" name="IMUDGES_MEMBERS">
       <Visible>1</Visible>
     </schema>
-    <table id="14" parent="13" name="Register"/>
-    <table id="15" parent="13" name="User"/>
-    <column id="16" parent="14" name="ak">
+    <table id="14" parent="6" name="compileinfo"/>
+    <table id="15" parent="6" name="contest"/>
+    <table id="16" parent="6" name="contest_problem"/>
+    <table id="17" parent="6" name="custominput"/>
+    <table id="18" parent="6" name="loginlog"/>
+    <table id="19" parent="6" name="mail"/>
+    <table id="20" parent="6" name="news"/>
+    <table id="21" parent="6" name="online"/>
+    <table id="22" parent="6" name="privilege"/>
+    <table id="23" parent="6" name="problem"/>
+    <table id="24" parent="6" name="reply"/>
+    <table id="25" parent="6" name="runtimeinfo"/>
+    <table id="26" parent="6" name="score"/>
+    <table id="27" parent="6" name="sign"/>
+    <table id="28" parent="6" name="sim"/>
+    <table id="29" parent="6" name="solution"/>
+    <table id="30" parent="6" name="source_code"/>
+    <table id="31" parent="6" name="source_code_user"/>
+    <table id="32" parent="6" name="topic"/>
+    <table id="33" parent="6" name="userinfo"/>
+    <table id="34" parent="6" name="users"/>
+    <table id="35" parent="13" name="Register"/>
+    <table id="36" parent="13" name="User"/>
+    <column id="37" parent="14" name="solution_id">
       <Position>1</Position>
-      <DataType>varchar(40)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="17" parent="14" name="sk">
+    <column id="38" parent="14" name="error">
       <Position>2</Position>
-      <DataType>varchar(40)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>text|0</DataType>
     </column>
-    <key id="18" parent="14" name="PRIMARY">
+    <key id="39" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ak</ColNames>
+      <ColNames>solution_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="19" parent="15" name="uid">
+    <column id="40" parent="15" name="contest_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="20" parent="15" name="mail">
+    <column id="41" parent="15" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="start_time">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="43" parent="15" name="end_time">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="44" parent="15" name="defunct">
+      <Position>5</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="15" name="description">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="46" parent="15" name="private">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="15" name="langmask">
+      <Position>8</Position>
+      <Comment>bits for LANG to mask</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="48" parent="15" name="password">
+      <Position>9</Position>
+      <DataType>char(16)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="49" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>contest_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="16" name="problem_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="51" parent="16" name="contest_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="52" parent="16" name="title">
+      <Position>3</Position>
+      <DataType>char(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="53" parent="16" name="num">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="54" parent="16" name="Index_contest_id">
+      <ColNames>contest_id</ColNames>
+    </index>
+    <column id="55" parent="17" name="solution_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="56" parent="17" name="input_text">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="57" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>solution_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="18" name="user_id">
+      <Position>1</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="59" parent="18" name="password">
+      <Position>2</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="60" parent="18" name="ip">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="61" parent="18" name="time">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="62" parent="18" name="user_log_index">
+      <ColNames>user_id
+time</ColNames>
+    </index>
+    <column id="63" parent="19" name="mail_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="19" name="to_user">
+      <Position>2</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="65" parent="19" name="from_user">
+      <Position>3</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="66" parent="19" name="title">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="67" parent="19" name="content">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="68" parent="19" name="new_mail">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="69" parent="19" name="reply">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="70" parent="19" name="in_date">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="71" parent="19" name="defunct">
+      <Position>9</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <index id="72" parent="19" name="uid">
+      <ColNames>to_user</ColNames>
+    </index>
+    <key id="73" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>mail_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="74" parent="20" name="news_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="75" parent="20" name="user_id">
+      <Position>2</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="76" parent="20" name="title">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="77" parent="20" name="content">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="20" name="time">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;2016-05-13 19:24:00&apos;</DefaultExpression>
+    </column>
+    <column id="79" parent="20" name="importance">
+      <Position>6</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="80" parent="20" name="defunct">
+      <Position>7</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <key id="81" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>news_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="82" parent="21" name="hash">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="21" name="ip">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="84" parent="21" name="ua">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="85" parent="21" name="refer">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="86" parent="21" name="lastmove">
+      <Position>5</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="21" name="firsttime">
+      <Position>6</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="88" parent="21" name="uri">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="89" parent="21" name="hash">
+      <ColNames>hash</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="90" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>hash</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="91" parent="21" name="hash">
+      <ColNames>hash</ColNames>
+      <UnderlyingIndexName>hash</UnderlyingIndexName>
+    </key>
+    <column id="92" parent="22" name="user_id">
+      <Position>1</Position>
+      <DataType>char(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="93" parent="22" name="rightstr">
+      <Position>2</Position>
+      <DataType>char(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="94" parent="22" name="defunct">
+      <Position>3</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <column id="95" parent="23" name="problem_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="96" parent="23" name="title">
+      <Position>2</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="97" parent="23" name="description">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="98" parent="23" name="input">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="99" parent="23" name="output">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="100" parent="23" name="sample_input">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="101" parent="23" name="sample_output">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="102" parent="23" name="spj">
+      <Position>8</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="103" parent="23" name="hint">
+      <Position>9</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="104" parent="23" name="source">
+      <Position>10</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="105" parent="23" name="in_date">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="106" parent="23" name="time_limit">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="107" parent="23" name="memory_limit">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="108" parent="23" name="defunct">
+      <Position>14</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <column id="109" parent="23" name="accepted">
+      <Position>15</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="110" parent="23" name="submit">
+      <Position>16</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="111" parent="23" name="solved">
+      <Position>17</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="112" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>problem_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="113" parent="24" name="rid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="114" parent="24" name="author_id">
+      <Position>2</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="24" name="time">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;2016-05-13 19:24:00&apos;</DefaultExpression>
+    </column>
+    <column id="116" parent="24" name="content">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="117" parent="24" name="topic_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="118" parent="24" name="status">
+      <Position>6</Position>
+      <DataType>int(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="119" parent="24" name="ip">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="120" parent="24" name="author_id">
+      <ColNames>author_id</ColNames>
+    </index>
+    <key id="121" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>rid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="122" parent="25" name="solution_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="123" parent="25" name="error">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="124" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>solution_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="125" parent="26" name="sid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="126" parent="26" name="user_id">
+      <Position>2</Position>
+      <DataType>varchar(48)|0</DataType>
+    </column>
+    <column id="127" parent="26" name="score">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="128" parent="26" name="reason">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="129" parent="26" name="date">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="130" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="131" parent="27" name="sid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="132" parent="27" name="user_id">
+      <Position>2</Position>
+      <DataType>varchar(48)|0</DataType>
+    </column>
+    <column id="133" parent="27" name="date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="134" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="135" parent="28" name="s_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="136" parent="28" name="sim_s_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="137" parent="28" name="sim">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="138" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>s_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="139" parent="28" name="simfilter">
+      <Turn>before-row</Turn>
+      <Events>I</Events>
+    </trigger>
+    <column id="140" parent="29" name="solution_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="141" parent="29" name="problem_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="142" parent="29" name="user_id">
+      <Position>3</Position>
+      <DataType>char(48)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="143" parent="29" name="time">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="144" parent="29" name="memory">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="145" parent="29" name="in_date">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;2016-05-13 19:24:00&apos;</DefaultExpression>
+    </column>
+    <column id="146" parent="29" name="result">
+      <Position>7</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="147" parent="29" name="language">
+      <Position>8</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="148" parent="29" name="ip">
+      <Position>9</Position>
+      <DataType>char(46)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="149" parent="29" name="contest_id">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="150" parent="29" name="valid">
+      <Position>11</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="151" parent="29" name="num">
+      <Position>12</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;-1&apos;</DefaultExpression>
+    </column>
+    <column id="152" parent="29" name="code_length">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="153" parent="29" name="judgetime">
+      <Position>14</Position>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="154" parent="29" name="pass_rate">
+      <Position>15</Position>
+      <DataType>decimal(3,2) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0.00&apos;</DefaultExpression>
+    </column>
+    <column id="155" parent="29" name="lint_error">
+      <Position>16</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="156" parent="29" name="judger">
+      <Position>17</Position>
+      <DataType>char(16)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;LOCAL&apos;</DefaultExpression>
+    </column>
+    <index id="157" parent="29" name="cid">
+      <ColNames>contest_id</ColNames>
+    </index>
+    <index id="158" parent="29" name="pid">
+      <ColNames>problem_id</ColNames>
+    </index>
+    <index id="159" parent="29" name="res">
+      <ColNames>result</ColNames>
+    </index>
+    <index id="160" parent="29" name="uid">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="161" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>solution_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="162" parent="30" name="solution_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="163" parent="30" name="source">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="164" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>solution_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="165" parent="31" name="solution_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="166" parent="31" name="source">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="167" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>solution_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="168" parent="32" name="tid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="169" parent="32" name="title">
+      <Position>2</Position>
+      <DataType>varbinary(60)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="170" parent="32" name="status">
+      <Position>3</Position>
+      <DataType>int(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="171" parent="32" name="top_level">
+      <Position>4</Position>
+      <DataType>int(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="172" parent="32" name="cid">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="173" parent="32" name="pid">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="174" parent="32" name="author_id">
+      <Position>7</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="175" parent="32" name="cid">
+      <ColNames>cid
+pid</ColNames>
+    </index>
+    <key id="176" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="177" parent="33" name="Id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="178" parent="33" name="UserName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="179" parent="33" name="UserLevel">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="180" parent="33" name="UserTime">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="181" parent="33" name="game_UserName_uindex">
+      <ColNames>UserName</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="182" parent="33" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="183" parent="33" name="game_UserName_uindex">
+      <ColNames>UserName</ColNames>
+      <UnderlyingIndexName>game_UserName_uindex</UnderlyingIndexName>
+    </key>
+    <column id="184" parent="34" name="user_id">
+      <Position>1</Position>
+      <DataType>varchar(48)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="185" parent="34" name="email">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="186" parent="34" name="submit">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="187" parent="34" name="solved">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="188" parent="34" name="defunct">
+      <Position>5</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <column id="189" parent="34" name="ip">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="190" parent="34" name="accesstime">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="191" parent="34" name="volume">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="192" parent="34" name="language">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="193" parent="34" name="password">
+      <Position>10</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="194" parent="34" name="reg_time">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="195" parent="34" name="nick">
+      <Position>12</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="196" parent="34" name="school">
+      <Position>13</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="197" parent="34" name="sid">
+      <Position>14</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <key id="198" parent="34" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="199" parent="35" name="ak">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="200" parent="35" name="sk">
+      <Position>2</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="201" parent="35" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ak</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="202" parent="36" name="uid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="203" parent="36" name="mail">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="21" parent="15" name="year">
+    <column id="204" parent="36" name="year">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="15" name="major">
+    <column id="205" parent="36" name="major">
       <Position>4</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <column id="23" parent="15" name="password">
+    <column id="206" parent="36" name="password">
       <Position>5</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="24" parent="15" name="User_mail_uindex">
+    <index id="207" parent="36" name="User_mail_uindex">
       <ColNames>mail</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="25" parent="15" name="PRIMARY">
+    <key id="208" parent="36" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="26" parent="15" name="User_mail_uindex">
+    <key id="209" parent="36" name="User_mail_uindex">
       <ColNames>mail</ColNames>
       <UnderlyingIndexName>User_mail_uindex</UnderlyingIndexName>
     </key>

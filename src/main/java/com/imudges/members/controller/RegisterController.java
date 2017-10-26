@@ -120,7 +120,7 @@ public class RegisterController extends ActionSupport {
         return ERROR;
     }
 
-    @org.apache.struts2.convention.annotation.Action(value = "register", results = {@Result(name = "success",type = "redirect", location = "login"), @Result(name = "error", location = "/WEB-INF/register/error.jsp")})
+    @org.apache.struts2.convention.annotation.Action(value = "register", results = {@Result(name = "success",type = "redirectAction", location = "index",params = {"namespace","/login"}), @Result(name = "error", location = "/WEB-INF/register/error.jsp")})
     public String register() {
         if(registerService.verifyKey(ak,sk)==0&&registerService.register(mail,password,password_r,ak)==0){
             return SUCCESS;
